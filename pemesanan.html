@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pemesanan</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #e3f2fd;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      background: white;
+      max-width: 500px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    button {
+      background-color: #0d6efd;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+    .loading {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .success {
+      display: none;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .success span {
+      display: block;
+      margin-top: 5px;
+      font-size: 14px;
+      color: #444;
+    }
+    .footer-icons {
+      text-align: center;
+      margin-top: 30px;
+    }
+    .footer-icons img {
+      width: 50px;
+      transition: transform 0.2s ease;
+    }
+    .footer-icons img:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Form Pemesanan</h2>
+    <form id="orderForm">
+      <input type="text" placeholder="Nama Lengkap" required>
+      <input type="text" placeholder="Nomor HP" required>
+      <input type="text" placeholder="Alamat Lengkap" required>
+      <select required>
+        <option value="">Pilih Menu</option>
+        <option value="Mie Ayam Biasa">Mie Ayam Biasa</option>
+        <option value="Mie Ayam Bakso">Mie Ayam Bakso</option>
+        <option value="Mie Ayam Ceker">Mie Ayam Ceker</option>
+        <option value="Mie Ayam Komplit">Mie Ayam Komplit</option>
+      </select>
+      <textarea placeholder="Catatan Tambahan"></textarea>
+      <select required>
+        <option value="">Metode Pembayaran</option>
+        <option value="Cash">Cash</option>
+        <option value="Transfer">Transfer Bank</option>
+        <option value="QRIS">QRIS</option>
+      </select>
+      <button type="submit">Pesan Sekarang</button>
+    </form>
+
+    <div class="loading" id="loading">Mengirim pesanan...</div>
+    <div class="success" id="success">
+      Pesanan berhasil dikirim!
+      <span>Pesananmu akan segera dikirim :)</span>
+    </div>
+  </div>
+
+  <div class="footer-icons">
+    <a href="#">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+    </a>
+  </div>
+
+  <script>
+    const form = document.getElementById('orderForm');
+    const loading = document.getElementById('loading');
+    const success = document.getElementById('success');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      loading.style.display = 'block';
+      success.style.display = 'none';
+
+      setTimeout(() => {
+        loading.style.display = 'none';
+        success.style.display = 'block';
+
+        setTimeout(() => {
+          window.location.href = 'terimakasih.html';
+        }, 2000);
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
